@@ -1,4 +1,4 @@
-package scripts.local;
+package scripts;
 
 import java.time.Duration;
 
@@ -13,12 +13,12 @@ import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class TestOSAppReminders {
+public class TestOutSystemsApp extends TestOutSystems {
 	private final String USERNAME = "publicdemo@yhouyang.me";
 	private final String PASSWORD = "On20June2023!";
 
 	private final String URL_LOGIN = "https://personal-vcgtfgt9.outsystemscloud.com/Reminders/Login";
-	private final String URL_MYREMINDER = "https://personal-vcgtfgt9.outsystemscloud.com/Reminders/MyReminders";
+	private final String URL_REMINDERS = "https://personal-vcgtfgt9.outsystemscloud.com/Reminders/MyReminders";
 	private final String URL_DETAIL = "https://personal-vcgtfgt9.outsystemscloud.com/Reminders/ReminderDetail";
 
 	private WebDriver driver;
