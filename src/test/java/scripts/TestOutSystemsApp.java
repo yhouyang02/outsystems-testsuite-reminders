@@ -1,57 +1,22 @@
 package scripts;
 
-import java.time.Duration;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-
 public class TestOutSystemsApp extends TestOutSystems {
-	private final String USERNAME = "publicdemo@yhouyang.me";
-	private final String PASSWORD = "On20June2023!";
-
-	private final String URL_LOGIN = "https://personal-vcgtfgt9.outsystemscloud.com/Reminders/Login";
-	private final String URL_REMINDERS = "https://personal-vcgtfgt9.outsystemscloud.com/Reminders/MyReminders";
-	private final String URL_DETAIL = "https://personal-vcgtfgt9.outsystemscloud.com/Reminders/ReminderDetail";
-
-	private WebDriver driver;
 
 	/**
-	 * Auto-selects the web driver and version. The same web driver must be
-	 * initialized before test cases.
+	 * Navigates to the test site.
 	 * 
-	 * @see #init()
-	 * @see {@link https://bonigarcia.dev/webdrivermanager/}
+	 * @see scripts.TestOutSystems.init()
 	 */
-	@BeforeClass
-	public void setup() {
-		/* Uncomment ONE correct browser driver for testing. */
-		WebDriverManager.edgedriver().setup();
-//		WebDriverManager.chromedriver().setup();
-//		WebDriverManager.firefoxdriver().setup();
-	}
-
-	/**
-	 * Initializes web driver and timeouts. Navigates to the test site. The same web
-	 * driver must be selected by WebDriverManager before initialization.
-	 * 
-	 * @see #setup()
-	 */
+	@Override
 	@BeforeMethod
 	public void init() {
-		/* Uncomment ONE correct browser for testing. */
-		driver = new EdgeDriver();
-//		driver = new ChromeDriver();
-//		driver = new FirefoxDriver();
-
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		super.init();
 		driver.get(URL_LOGIN);
 	}
 
@@ -78,14 +43,13 @@ public class TestOutSystemsApp extends TestOutSystems {
 
 	@Test
 	public void testDeleteReminder() {
+		testLogin();
 		// TODO:
 	}
 
-	/**
-	 * Shuts down web driver.
-	 */
+	@Override
 	@AfterMethod
 	public void shutdown() {
-		driver.quit();
+		super.shutdown();
 	}
 }
